@@ -365,5 +365,18 @@ rm(list= ls()[!(ls() %in% c('stress.p1.ciout.final','stress.p2.ciout.final',
                             'rheum.p3.ciout.final','rheum.p4.ciout.final',
                             'rheum.p5.ciout.final','rheum.p6.ciout.final'))])
 
+stress.AUC <- rbind(stress.p1.ciout.final$cvAUC,stress.p2.ciout.final$cvAUC,
+                    stress.p3.ciout.final$cvAUC,stress.p4.ciout.final$cvAUC,
+                    stress.p5.ciout.final$cvAUC,stress.p6.ciout.final$cvAUC)
+rheum.AUC <- rbind(rheum.p1.ciout.final$cvAUC,rheum.p2.ciout.final$cvAUC,
+                   rheum.p3.ciout.final$cvAUC,rheum.p4.ciout.final$cvAUC,
+                   rheum.p5.ciout.final$cvAUC,rheum.p6.ciout.final$cvAUC)
+AUC.table <- cbind(stress.AUC,rheum.AUC)
+colnames(AUC.table) <- c('stress_cvAUC','RA_cvAUC')
+rownames(AUC.table) <- c('ACSL1 & AQP9','NFKB1 & IFNB1','PRG2 & ACSL1',
+                         'PRG2 & CLEC5A','NFKB1 & CLEC5A','ACSL1 & CLEC5A')
+(AUC.table <- as.data.frame(AUC.table))
+xtable(AUC.table)
+
 
 #EndScript
