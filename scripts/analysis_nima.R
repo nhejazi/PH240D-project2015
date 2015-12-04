@@ -1,18 +1,19 @@
 ### ================== ###
 ### Nima Hejazi        ###
-### SID 22669337       ###
 ### Public Health 240D ###
-### Final Project      ###
-### Dec. 02, 2015      ###
+### Group Project      ###
+### Dec. 03, 2015      ###
 ### ================== ###
 
 # analysis for genes on Rheumatoid Arthritis and Stress
 rm(list=ls())
 set.seed(2423)
-data_dir = '/Users/nimahejazi/Desktop/240D_FinalProj/data/'
+data_dir = '/Users/nimahejazi/github-repos/bmcsa-project240D/data/' # change to run
+stress_data = "stress_genes.txt" # change to run
+rheumatoid_data = "rheumatoid_genes.txt" # change to run
 if (getwd() != data_dir) { setwd(data_dir) }
 
-stress_data = read.table("stress_genes.txt", sep="", fill=FALSE, 
+stress_data = read.table(stress_data, sep="", fill=FALSE, 
                          strip.white=TRUE)
 
 stress_pairs1 = as.data.frame(t(rbind(stress_data["ACSL1", ], 
@@ -31,10 +32,10 @@ stress_pairs6 = as.data.frame(t(rbind(stress_data["ACSL1", ],
 stress_outcome <- replace(as.vector(rep(1,length(colnames(stress_data)))), 
                           grep('Non',colnames(stress_data)), 0)
 if (length(stress_outcome) != length(colnames(stress_data))) { 
-  print('FUCK, PROBLEM WITH OUTCOMES - STOP')}
+  print('PROBLEM WITH OUTCOMES - STOP')}
 
 
-rheumatoid_data = read.table("rheumatoid_genes.txt", sep="", fill=FALSE, 
+rheumatoid_data = read.table(rheumatoid_data, sep="", fill=FALSE, 
                              strip.white=TRUE)
 
 rheumatoid_pairs1 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ], 
@@ -53,7 +54,7 @@ rheumatoid_pairs6 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ],
 rheumatoid_outcome <- replace(as.vector(rep(1,length(colnames(rheumatoid_data)))), 
                               grep('.Control',colnames(rheumatoid_data)), 0)
 if (length(rheumatoid_outcome) != length(colnames(rheumatoid_data))) { 
-  print('FUCK, PROBLEM WITH OUTCOMES - STOP')}
+  print('PROBLEM WITH OUTCOMES - STOP')}
 
 rm(data_dir, stress_data, rheumatoid_data)
 
@@ -111,8 +112,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-stress.pairs1.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-stress.pairs1.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (stress.pairs1.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(stress.pairs1.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: NFKB1, IFNB1 
@@ -127,8 +128,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-stress.pairs2.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-stress.pairs2.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (stress.pairs2.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(stress.pairs2.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
@@ -143,8 +144,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-stress.pairs3.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-stress.pairs3.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (stress.pairs3.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(stress.pairs3.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
@@ -159,8 +160,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-stress.pairs4.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-stress.pairs4.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (stress.pairs4.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(stress.pairs4.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: NFKB1, CLEC5A 
@@ -175,8 +176,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-stress.pairs5.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-stress.pairs5.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (stress.pairs5.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(stress.pairs5.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: ACSL1, CLEC5A
@@ -191,8 +192,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-stress.pairs6.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-stress.pairs6.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (stress.pairs6.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(stress.pairs6.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 
@@ -215,8 +216,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-rheum.pairs1.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-rheum.pairs1.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (rheum.pairs1.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(rheum.pairs1.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: NFKB1, IFNB1 
@@ -231,8 +232,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-rheum.pairs2.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-rheum.pairs2.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (rheum.pairs2.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(rheum.pairs2.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
@@ -247,8 +248,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-rheum.pairs3.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-rheum.pairs3.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (rheum.pairs3.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(rheum.pairs3.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
@@ -263,8 +264,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-rheum.pairs4.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-rheum.pairs4.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (rheum.pairs4.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(rheum.pairs4.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: NFKB1, CLEC5A 
@@ -279,8 +280,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-rheum.pairs5.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-rheum.pairs5.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (rheum.pairs5.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(rheum.pairs5.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 # TWO GENES IN THE SL: ACSL1, CLEC5A
@@ -295,8 +296,8 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-rheum.pairs6.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold)
-rheum.pairs6.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold)
+# (rheum.pairs6.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
+(rheum.pairs6.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
 
 
 
