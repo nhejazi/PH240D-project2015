@@ -9,8 +9,8 @@
 rm(list=ls())
 set.seed(2423)
 data_dir = '/Users/nimahejazi/github-repos/bmcsa-project240D/data/' # change to run
-stress_data = "stress_genes.txt" # change to run
-rheumatoid_data = "rheumatoid_genes.txt" # change to run
+stress_data = "final.stress.genes.txt" # change to run
+rheumatoid_data = "final.ra.genes.txt" # change to run
 if (getwd() != data_dir) { setwd(data_dir) }
 
 stress_data = read.table(stress_data, sep="", fill=FALSE, 
