@@ -64,7 +64,7 @@ rm(data_dir, stress_data, rheumatoid_data)
 library(ROCR)
 library(cvAUC)
 library(SuperLearner)
-SL.lib <- c("SL.glm","SL.stepAIC","SL.bayesglm","SL.randomForest", "SL.gam","SL.mean")
+SL.lib <- c("SL.glm","SL.stepAIC","SL.bayesglm","SL.randomForest","SL.gam","SL.mean")
 CV_folds = 10
 
 
@@ -112,8 +112,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (stress.pairs1.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(stress.pairs1.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p1.ciout.final <- stress.ciout.final.a
+} else {
+  stress.p1.ciout.final <- stress.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: NFKB1, IFNB1 
@@ -128,8 +133,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (stress.pairs2.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(stress.pairs2.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p2.ciout.final <- stress.ciout.final.a
+} else {
+  stress.p2.ciout.final <- stress.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
@@ -144,8 +154,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (stress.pairs3.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(stress.pairs3.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p3.ciout.final <- stress.ciout.final.a
+} else {
+  stress.p3.ciout.final <- stress.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
@@ -160,8 +175,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (stress.pairs4.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(stress.pairs4.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p4.ciout.final <- stress.ciout.final.a
+} else {
+  stress.p4.ciout.final <- stress.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: NFKB1, CLEC5A 
@@ -176,8 +196,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (stress.pairs5.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(stress.pairs5.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p5.ciout.final <- stress.ciout.final.a
+} else {
+  stress.p5.ciout.final <- stress.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: ACSL1, CLEC5A
@@ -192,9 +217,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (stress.pairs6.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(stress.pairs6.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
-
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p6.ciout.final <- stress.ciout.final.a
+} else {
+  stress.p6.ciout.final <- stress.ciout.final.b
+}
 
 
 # Applying Super Learner to "Rheumatoid Arthritis" data
@@ -216,8 +245,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (rheum.pairs1.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(rheum.pairs1.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p1.ciout.final <- rheum.ciout.final.a
+} else {
+  rheum.p1.ciout.final <- rheum.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: NFKB1, IFNB1 
@@ -232,8 +266,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (rheum.pairs2.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(rheum.pairs2.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p2.ciout.final <- rheum.ciout.final.a
+} else {
+  rheum.p2.ciout.final <- rheum.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
@@ -248,8 +287,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (rheum.pairs3.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(rheum.pairs3.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p3.ciout.final <- rheum.ciout.final.a
+} else {
+  rheum.p3.ciout.final <- rheum.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
@@ -264,8 +308,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (rheum.pairs4.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(rheum.pairs4.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p4.ciout.final <- rheum.ciout.final.a
+} else {
+  rheum.p4.ciout.final <- rheum.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: NFKB1, CLEC5A 
@@ -280,8 +329,13 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (rheum.pairs5.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(rheum.pairs5.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p5.ciout.final <- rheum.ciout.final.a
+} else {
+  rheum.p5.ciout.final <- rheum.ciout.final.b
+}
 
 
 # TWO GENES IN THE SL: ACSL1, CLEC5A
@@ -296,9 +350,20 @@ for(k in 1:CV_folds) {
   ii = unlist(fld[k])
   fold[ii] = k
 }
-# (rheum.pairs6.ciout.final = ci.cvAUC(predsY.final, Y, folds = fold))
-(rheum.pairs6.ciout.final.alt = cvAUC(predsY.final, Y, folds = fold))
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p6.ciout.final <- rheum.ciout.final.a
+} else {
+  rheum.p6.ciout.final <- rheum.ciout.final.b
+}
 
+rm(list= ls()[!(ls() %in% c('stress.p1.ciout.final','stress.p2.ciout.final',
+                            'stress.p3.ciout.final','stress.p4.ciout.final',
+                            'stress.p5.ciout.final','stress.p6.ciout.final',
+                            'rheum.p1.ciout.final','rheum.p2.ciout.final',
+                            'rheum.p3.ciout.final','rheum.p4.ciout.final',
+                            'rheum.p5.ciout.final','rheum.p6.ciout.final'))])
 
 
 #EndScript
