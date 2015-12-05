@@ -7,23 +7,29 @@
 
 # analysis for genes on Rheumatoid Arthritis and Stress
 rm(list=ls())
-set.seed(2423)
+set.seed(0) # for reproducibility across group analyses
 data_dir = '/Users/nimahejazi/github-repos/bmcsa-project240D/data/' # change to run
-stress_data = "final.stress.genes.txt" # change to run
-rheumatoid_data = "final.ra.genes.txt" # change to run
+stress_data = "final_stress_genes.txt" # change to run
+rheumatoid_data = "final_ra_genes.txt" # change to run
 if (getwd() != data_dir) { setwd(data_dir) }
 
 stress_data = read.table(stress_data, sep="", fill=FALSE, 
                          strip.white=TRUE)
 
-stress_pairs1 = as.data.frame(t(rbind(stress_data["ACSL1", ], 
-                                      stress_data["AQP9", ])))
+stress_pairs1.v1 = as.data.frame(t(rbind(stress_data["ACSL1", ], 
+                                         stress_data["AQP9", ])))
+stress_pairs1.v2 = as.data.frame(t(rbind(stress_data["ACSL1", ], 
+                                         stress_data["AQP9.2", ])))
 stress_pairs2 = as.data.frame(t(rbind(stress_data["NFKB1", ], 
                                       stress_data["IFNB1", ])))
-stress_pairs3 = as.data.frame(t(rbind(stress_data["PRG2", ], 
-                                      stress_data["ACSL1", ])))
-stress_pairs4 = as.data.frame(t(rbind(stress_data["PRG2", ], 
-                                      stress_data["CLEC5A", ])))
+stress_pairs3.v1 = as.data.frame(t(rbind(stress_data["PRG2", ], 
+                                         stress_data["ACSL1", ])))
+stress_pairs3.v2 = as.data.frame(t(rbind(stress_data["PRG2.2", ], 
+                                         stress_data["ACSL1", ])))
+stress_pairs4.v1 = as.data.frame(t(rbind(stress_data["PRG2", ], 
+                                         stress_data["CLEC5A", ])))
+stress_pairs4.v2 = as.data.frame(t(rbind(stress_data["PRG2.2", ], 
+                                         stress_data["CLEC5A", ])))
 stress_pairs5 = as.data.frame(t(rbind(stress_data["NFKB1", ], 
                                       stress_data["CLEC5A", ])))
 stress_pairs6 = as.data.frame(t(rbind(stress_data["ACSL1", ], 
