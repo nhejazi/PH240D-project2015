@@ -5,4 +5,4 @@ all:
 	pdflatex $(TITLE).tex
 
 clean: 
-	rm -f *.{aux,log,bbl,lof,lot,blg,out,gz,dvi,nav,toc,snm}
+	rm -f *.{aux,log,bbl,lof,lot,blg,out,gz,dvi,nav,toc,snm,vrb}
