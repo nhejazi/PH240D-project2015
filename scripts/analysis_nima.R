@@ -44,14 +44,22 @@ if (length(stress_outcome) != length(colnames(stress_data))) {
 rheumatoid_data = read.table(rheumatoid_data, sep="", fill=FALSE, 
                              strip.white=TRUE)
 
-rheumatoid_pairs1 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ], 
-                                          rheumatoid_data["AQP9", ])))
+rheumatoid_pairs1.v1 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ], 
+                                             rheumatoid_data["AQP9", ])))
+rheumatoid_pairs1.v2 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ], 
+                                             rheumatoid_data["AQP9.2", ])))
+rheumatoid_pairs1.v3 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ], 
+                                             rheumatoid_data["AQP9.3", ])))
 rheumatoid_pairs2 = as.data.frame(t(rbind(rheumatoid_data["NFKB1", ], 
                                           rheumatoid_data["IFNB1", ])))
-rheumatoid_pairs3 = as.data.frame(t(rbind(rheumatoid_data["PRG2", ], 
-                                           rheumatoid_data["ACSL1", ])))
-rheumatoid_pairs4 = as.data.frame(t(rbind(rheumatoid_data["PRG2", ], 
-                                          rheumatoid_data["CLEC5A", ])))
+rheumatoid_pairs3.v1 = as.data.frame(t(rbind(rheumatoid_data["PRG2", ], 
+                                             rheumatoid_data["ACSL1", ])))
+rheumatoid_pairs3.v2 = as.data.frame(t(rbind(rheumatoid_data["PRG2.2", ], 
+                                             rheumatoid_data["ACSL1", ])))
+rheumatoid_pairs4.v1 = as.data.frame(t(rbind(rheumatoid_data["PRG2", ], 
+                                             rheumatoid_data["CLEC5A", ])))
+rheumatoid_pairs4.v2 = as.data.frame(t(rbind(rheumatoid_data["PRG2.2", ], 
+                                             rheumatoid_data["CLEC5A", ])))
 rheumatoid_pairs5 = as.data.frame(t(rbind(rheumatoid_data["NFKB1", ], 
                                           rheumatoid_data["CLEC5A", ])))
 rheumatoid_pairs6 = as.data.frame(t(rbind(rheumatoid_data["ACSL1", ], 
@@ -107,7 +115,7 @@ Y = as.numeric(Y) # numeric vector of our zero-one outcomes
 
 
 # TWO GENES IN THE SL: ACSL1, AQP9 
-X = stress_pairs1
+X = stress_pairs1.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
 fld = fit.pairs.SL$fold
@@ -121,9 +129,28 @@ for(k in 1:CV_folds) {
 stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
 stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
 if (exists("stress.ciout.final.a") == TRUE) {
-  stress.p1.ciout.final <- stress.ciout.final.a
+  stress.p1.ciout.final.1 <- stress.ciout.final.a
 } else {
-  stress.p1.ciout.final <- stress.ciout.final.b
+  stress.p1.ciout.final.1 <- stress.ciout.final.b
+}
+
+X = stress_pairs1.v2
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p1.ciout.final.2 <- stress.ciout.final.a
+} else {
+  stress.p1.ciout.final.2 <- stress.ciout.final.b
 }
 
 
@@ -149,7 +176,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
-X = stress_pairs3
+X = stress_pairs3.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
 fld = fit.pairs.SL$fold
@@ -163,14 +190,33 @@ for(k in 1:CV_folds) {
 stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
 stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
 if (exists("stress.ciout.final.a") == TRUE) {
-  stress.p3.ciout.final <- stress.ciout.final.a
+  stress.p3.ciout.final.1 <- stress.ciout.final.a
 } else {
-  stress.p3.ciout.final <- stress.ciout.final.b
+  stress.p3.ciout.final.1 <- stress.ciout.final.b
+}
+
+X = stress_pairs3.v2
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p3.ciout.final.2 <- stress.ciout.final.a
+} else {
+  stress.p3.ciout.final.2 <- stress.ciout.final.b
 }
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
-X = stress_pairs4
+X = stress_pairs4.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
 fld = fit.pairs.SL$fold
@@ -184,9 +230,28 @@ for(k in 1:CV_folds) {
 stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
 stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
 if (exists("stress.ciout.final.a") == TRUE) {
-  stress.p4.ciout.final <- stress.ciout.final.a
+  stress.p4.ciout.final.1 <- stress.ciout.final.a
 } else {
-  stress.p4.ciout.final <- stress.ciout.final.b
+  stress.p4.ciout.final.1 <- stress.ciout.final.b
+}
+
+X = stress_pairs4.v2
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+stress.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+stress.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("stress.ciout.final.a") == TRUE) {
+  stress.p4.ciout.final.2 <- stress.ciout.final.a
+} else {
+  stress.p4.ciout.final.2 <- stress.ciout.final.b
 }
 
 
@@ -240,7 +305,7 @@ Y = as.numeric(Y) # numeric vector of our zero-one outcomes
 
 
 # TWO GENES IN THE SL: ACSL1, AQP9 
-X = rheumatoid_pairs1
+X = rheumatoid_pairs1.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
 fld = fit.pairs.SL$fold
@@ -254,9 +319,47 @@ for(k in 1:CV_folds) {
 rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
 rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
 if (exists("rheum.ciout.final.a") == TRUE) {
-  rheum.p1.ciout.final <- rheum.ciout.final.a
+  rheum.p1.ciout.final.1 <- rheum.ciout.final.a
 } else {
-  rheum.p1.ciout.final <- rheum.ciout.final.b
+  rheum.p1.ciout.final.1 <- rheum.ciout.final.b
+}
+
+X = rheumatoid_pairs1.v2
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p1.ciout.final.2 <- rheum.ciout.final.a
+} else {
+  rheum.p1.ciout.final.2 <- rheum.ciout.final.b
+}
+
+X = rheumatoid_pairs1.v3
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p1.ciout.final.3 <- rheum.ciout.final.a
+} else {
+  rheum.p1.ciout.final.3 <- rheum.ciout.final.b
 }
 
 
@@ -282,7 +385,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
-X = rheumatoid_pairs3
+X = rheumatoid_pairs3.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
 fld = fit.pairs.SL$fold
@@ -296,14 +399,33 @@ for(k in 1:CV_folds) {
 rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
 rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
 if (exists("rheum.ciout.final.a") == TRUE) {
-  rheum.p3.ciout.final <- rheum.ciout.final.a
+  rheum.p3.ciout.final.1 <- rheum.ciout.final.a
 } else {
-  rheum.p3.ciout.final <- rheum.ciout.final.b
+  rheum.p3.ciout.final.1 <- rheum.ciout.final.b
+}
+
+X = rheumatoid_pairs3.v2
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p3.ciout.final.2 <- rheum.ciout.final.a
+} else {
+  rheum.p3.ciout.final.2 <- rheum.ciout.final.b
 }
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
-X = rheumatoid_pairs4
+X = rheumatoid_pairs4.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
 fld = fit.pairs.SL$fold
@@ -317,9 +439,28 @@ for(k in 1:CV_folds) {
 rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
 rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
 if (exists("rheum.ciout.final.a") == TRUE) {
-  rheum.p4.ciout.final <- rheum.ciout.final.a
+  rheum.p4.ciout.final.1 <- rheum.ciout.final.a
 } else {
-  rheum.p4.ciout.final <- rheum.ciout.final.b
+  rheum.p4.ciout.final.1 <- rheum.ciout.final.b
+}
+
+X = rheumatoid_pairs4.v2
+fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
+                                SL.library = SL.lib, V = CV_folds)
+fld = fit.pairs.SL$fold
+predsY.final = fit.pairs.SL$SL.predict
+
+fold = rep(NA, nrow(X))
+for(k in 1:CV_folds) {
+  ii = unlist(fld[k])
+  fold[ii] = k
+}
+rheum.ciout.final.a = ci.cvAUC(predsY.final, Y, folds = fold)
+rheum.ciout.final.b = cvAUC(predsY.final, Y, folds = fold)
+if (exists("rheum.ciout.final.a") == TRUE) {
+  rheum.p4.ciout.final.2 <- rheum.ciout.final.a
+} else {
+  rheum.p4.ciout.final.2 <- rheum.ciout.final.b
 }
 
 
@@ -364,25 +505,27 @@ if (exists("rheum.ciout.final.a") == TRUE) {
   rheum.p6.ciout.final <- rheum.ciout.final.b
 }
 
-rm(list= ls()[!(ls() %in% c('stress.p1.ciout.final','stress.p2.ciout.final',
-                            'stress.p3.ciout.final','stress.p4.ciout.final',
-                            'stress.p5.ciout.final','stress.p6.ciout.final',
-                            'rheum.p1.ciout.final','rheum.p2.ciout.final',
-                            'rheum.p3.ciout.final','rheum.p4.ciout.final',
-                            'rheum.p5.ciout.final','rheum.p6.ciout.final'))])
 
-stress.AUC <- rbind(stress.p1.ciout.final$cvAUC,stress.p2.ciout.final$cvAUC,
-                    stress.p3.ciout.final$cvAUC,stress.p4.ciout.final$cvAUC,
-                    stress.p5.ciout.final$cvAUC,stress.p6.ciout.final$cvAUC)
-rheum.AUC <- rbind(rheum.p1.ciout.final$cvAUC,rheum.p2.ciout.final$cvAUC,
-                   rheum.p3.ciout.final$cvAUC,rheum.p4.ciout.final$cvAUC,
-                   rheum.p5.ciout.final$cvAUC,rheum.p6.ciout.final$cvAUC)
+stress.AUC <- rbind(max(stress.p1.ciout.final.1$cvAUC,stress.p1.ciout.final.2$cvAUC),
+                    max(stress.p3.ciout.final.1$cvAUC,stress.p3.ciout.final.2$cvAUC),
+                    max(stress.p4.ciout.final.1$cvAUC,stress.p4.ciout.final.2$cvAUC),
+                    stress.p2.ciout.final$cvAUC,stress.p5.ciout.final$cvAUC,
+                    stress.p6.ciout.final$cvAUC)
+
+rheum.AUC <- rbind(max(rheum.p1.ciout.final.1$cvAUC,rheum.p1.ciout.final.2$cvAUC,rheum.p1.ciout.final.3$cvAUC),
+                   max(rheum.p3.ciout.final.1$cvAUC,rheum.p3.ciout.final.2$cvAUC),
+                   max(rheum.p4.ciout.final.1$cvAUC,rheum.p4.ciout.final.2$cvAUC),
+                   rheum.p2.ciout.final$cvAUC,rheum.p5.ciout.final$cvAUC,
+                   rheum.p6.ciout.final$cvAUC)
+
+rm(list= ls()[!(ls() %in% c('stress.AUC','rheum.AUC'))])
+
 AUC.table <- cbind(stress.AUC,rheum.AUC)
 colnames(AUC.table) <- c('stress_cvAUC','RA_cvAUC')
 rownames(AUC.table) <- c('ACSL1 & AQP9','NFKB1 & IFNB1','PRG2 & ACSL1',
                          'PRG2 & CLEC5A','NFKB1 & CLEC5A','ACSL1 & CLEC5A')
 (AUC.table <- as.data.frame(AUC.table))
-xtable(AUC.table)
+# xtable(AUC.table)
 
 
 #EndScript
