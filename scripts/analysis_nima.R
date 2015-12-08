@@ -115,6 +115,7 @@ Y = as.numeric(Y) # numeric vector of our zero-one outcomes
 
 
 # TWO GENES IN THE SL: ACSL1, AQP9 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs1.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -134,6 +135,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
   stress.p1.ciout.final.1 <- stress.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs1.v2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -155,6 +157,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: NFKB1, IFNB1 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -176,6 +179,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs3.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -195,6 +199,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
   stress.p3.ciout.final.1 <- stress.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs3.v2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -216,6 +221,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs4.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -235,6 +241,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
   stress.p4.ciout.final.1 <- stress.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs4.v2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -256,6 +263,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: NFKB1, CLEC5A 
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs5
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -277,6 +285,7 @@ if (exists("stress.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: ACSL1, CLEC5A
+set.seed(0) # for reproducibility across group analyses
 X = stress_pairs6
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -305,6 +314,7 @@ Y = as.numeric(Y) # numeric vector of our zero-one outcomes
 
 
 # TWO GENES IN THE SL: ACSL1, AQP9 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs1.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -324,6 +334,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
   rheum.p1.ciout.final.1 <- rheum.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs1.v2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -343,6 +354,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
   rheum.p1.ciout.final.2 <- rheum.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs1.v3
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -364,6 +376,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: NFKB1, IFNB1 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -385,6 +398,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: PRG2,ACSL1 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs3.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -404,6 +418,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
   rheum.p3.ciout.final.1 <- rheum.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs3.v2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -425,6 +440,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: PRG2, CLEC5A 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs4.v1
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -444,6 +460,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
   rheum.p4.ciout.final.1 <- rheum.ciout.final.b
 }
 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs4.v2
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -465,6 +482,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: NFKB1, CLEC5A 
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs5
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -486,6 +504,7 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 # TWO GENES IN THE SL: ACSL1, CLEC5A
+set.seed(0) # for reproducibility across group analyses
 X = rheumatoid_pairs6
 fit.pairs.SL <- CV.SuperLearner(Y, X, family = binomial(), 
                                 SL.library = SL.lib, V = CV_folds)
@@ -518,9 +537,10 @@ rheum.AUC <- rbind(max(rheum.p1.ciout.final.1$cvAUC,rheum.p1.ciout.final.2$cvAUC
                    rheum.p2.ciout.final$cvAUC,rheum.p5.ciout.final$cvAUC,
                    rheum.p6.ciout.final$cvAUC)
 
-rm(list= ls()[!(ls() %in% c('stress.AUC','rheum.AUC'))])
-
 AUC.table <- cbind(stress.AUC,rheum.AUC)
+
+rm(list= ls()[!(ls() %in% c('AUC.table'))])
+
 colnames(AUC.table) <- c('stress_cvAUC','RA_cvAUC')
 rownames(AUC.table) <- c('ACSL1 & AQP9','NFKB1 & IFNB1','PRG2 & ACSL1',
                          'PRG2 & CLEC5A','NFKB1 & CLEC5A','ACSL1 & CLEC5A')
