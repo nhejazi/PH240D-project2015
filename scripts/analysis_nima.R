@@ -526,15 +526,13 @@ if (exists("rheum.ciout.final.a") == TRUE) {
 
 
 stress.AUC <- rbind(max(stress.p1.ciout.final.1$cvAUC,stress.p1.ciout.final.2$cvAUC),
-                    max(stress.p3.ciout.final.1$cvAUC,stress.p3.ciout.final.2$cvAUC),
+                    stress.p2.ciout.final$cvAUC,max(stress.p3.ciout.final.1$cvAUC,stress.p3.ciout.final.2$cvAUC),
                     max(stress.p4.ciout.final.1$cvAUC,stress.p4.ciout.final.2$cvAUC),
-                    stress.p2.ciout.final$cvAUC,stress.p5.ciout.final$cvAUC,
-                    stress.p6.ciout.final$cvAUC)
+                    stress.p5.ciout.final$cvAUC,stress.p6.ciout.final$cvAUC)
 
 rheum.AUC <- rbind(max(rheum.p1.ciout.final.1$cvAUC,rheum.p1.ciout.final.2$cvAUC,rheum.p1.ciout.final.3$cvAUC),
-                   max(rheum.p3.ciout.final.1$cvAUC,rheum.p3.ciout.final.2$cvAUC),
-                   max(rheum.p4.ciout.final.1$cvAUC,rheum.p4.ciout.final.2$cvAUC),
-                   rheum.p2.ciout.final$cvAUC,rheum.p5.ciout.final$cvAUC,
+                   rheum.p2.ciout.final$cvAUC,max(rheum.p3.ciout.final.1$cvAUC,rheum.p3.ciout.final.2$cvAUC),
+                   max(rheum.p4.ciout.final.1$cvAUC,rheum.p4.ciout.final.2$cvAUC),rheum.p5.ciout.final$cvAUC,
                    rheum.p6.ciout.final$cvAUC)
 
 AUC.table <- cbind(stress.AUC,rheum.AUC)
