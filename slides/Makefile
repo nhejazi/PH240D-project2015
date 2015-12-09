@@ -1,7 +1,7 @@
 TITLE="group_pres"
 
 all: 
-	latex $(TITLE).tex
+	pdflatex $(TITLE).tex
 	pdflatex $(TITLE).tex
 
 clean: 
