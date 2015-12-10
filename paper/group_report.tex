@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 \graphicspath{ {figs/} }
 
-\title{Gene Signatures and Super Learning}
+\title{Finding Gene Signatures Unique to Benzene Exposure}
 \author{
   Courtney Schiffman
   \and
@@ -22,24 +22,12 @@
 \begin{document}
 \maketitle
 
-\abstract{We report analyses intended to explore the functional magnetic
-  resonance imaging (fMRI) data collected in studies conducted by Repovs et al.,
-on the manner in which brain network connectivity is related to schizophrenia
-\cite{repovs2011,repovs2012}. A host of exploratory analyses, combining both
-classical linear modeling methods and machine learning, were undertaken in order
-to gain further insights into the fMRI data examined.}
+\abstract{Current U.S. standards allow occupational exposure to benzene at a level of less than 1 ppm. However, there is a concern that even an exposure to benzene at this level has detrimental health effects, and can cause differential expression of various genes. As part of an ongoing study with Martyn Smith¿s Superfund Research Program at UC Berkeley, mRNA was collected from Chinese factory workers who had been exposed to various levels of benzene. Initial gene expression analysis showed that a subset of genes from the subjects were differentially expressed between exposed and control subjects in the study. After further analysis, it is hypothesized that it takes only certain pairs of these differentially expressed genes to predict with relative accuracy whether a subject has been exposed to benzene at the less than 1 ppm level. Furthermore, there seem to be several pairs of genes which can act as benzene biomarkers: AQP9 and ACSL1, NFKB1 and IFNB1, PRG2 and ACSL1 , PRG2 and CLEC5A, NFKB1 and CLEC5A, ACSL1 and CLEC5A. In order to help determine whether these gene signatures are unique to benzene exposure, we test whether these same pairs of genes are differentially expressed in other exposure studies, and see whether these genes can act as biomarkers for other confounding exposure/disease and lifestyle variables. To test these genes¿ sensitivity to other exposure variables, we used data from several  human peripheral blood mononucleocyte cell (pbmc) studies, with mRNA from case and control subjects sequenced by various microarray platforms . While in most cases the genes were very poor predictors of exposure to the various chemicals/lifestyles/diseases, in one exposure case, occupational vs. environmental exposure to nickel, certain pairs of the genes of interest predicted exposure almost perfectly.}
 
 \section{Introduction}
 
-The human central nervous system is a complex dynamic network, consisting of
-numerous functional regions that coordinate everything from simple behaviors to
-complicated thoughts. In an effort to better understand the manner in which
-functional changes contribute to the symptoms of schizophrenia, Repovs \textit{et
-al.} conducted neuroimaging studies, including both functional connectivity
-magnetic resonance imaging (fcMRI) and diffusion tensor imaging (DTI), on many
-subjects, with their goal being to characterize the activity of several brain
-regions chosen a priori, and to develop an understanding of how the functional 
-activities of these regions may differ across health states \cite{repovs2011,repovs2012}.
+From the benzene study analysis, we take as given the six pairs of differentially expressed genes found to be proposed biological markers of benzene exposure. Our goal is to research whether these genes are unique signatures for benzene, or if their remarkable ability to predict benzene exposure is possibly being cofounded with another $exposure/lifestyle/disease$ variable. To answer this question, our research extended to six human pbmc datasets, each studying six different exposure/lifestyle/disease effects on gene expression: exposure to nickel, exposure to arsenic, smoking, stress, peripheral arterial disease and rheumatoid arthritis. For each of these six additional pbmc studies, let Ybe an $n x 1$ binary ¿treatment¿ variable indicating $exposure/lifestyle/disease$ for each subject within the study. Let X be an $n x 2$ matrix of gene expression levels, where n is the number of subjects in the study, and where each row of X is the expression levels of two genes for a particular subject in the study.  Since there are six pairs of genes of interest, there will be six different $n x 2$  X matrices for every study, $X1...X6$, each time changing which two different genes make up the columns of the Xmatrix. In each study on exposure/lifestyle/disease, our parameter of interest is the expected value of the binary outcome variable given the gene expression matrix Xi, $E[Y|Xi$] $i=1,...,6$. In other words, our goal is to estimate $P(Y=1|Xi )$, $i=1,...,6$. To put it in a prediction framework, our goal is to build a predictor of the binary treatment variable based on the expression levels of two genes, for various pairs of genes. We then assess the performance of each of the six binary predictors for each of the six studies by estimating the area under the ROC curves. Pairs of genes which are good predictors of exposure/lifestyle/disease will have predictor functions with large AUC estimates. The final step is to compare these AUC estimates with the corresponding AUC estimates for the predictors from the benzene study. We are hoping that at least one of the six pairs of genes does a poor job of predicting exposure/lifestyle/disease in all of the pbmc studies, and is thus a unique biomarker for benzene exposure in so far as these six datasets are concerned.
+
 
 \section{Data}
 
