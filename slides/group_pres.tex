@@ -35,9 +35,10 @@
 \begin{frame}[fragile]
   	\frametitle{Benzene, Genes, and Health}
   		\begin{itemize}
-  			\item why?
- 			\item when?
-  			\item why?     
+  			\item Data collected on 77 subjects -- some exposed to benzene, others control.
+			\item Gene expression patterns were measured using a new sequencing technology -- nCounter.
+ 			\item Used Super Learner to examine minimum genes necessary to predict benzene exposure with relative accuracy.
+  			\item Found 6 pairs of genes (PRG2, AQP9, NFKB1, ACSL1, CLEC5A, IFNB1)
   		\end{itemize}
 \end{frame}
 
@@ -46,9 +47,9 @@
 \begin{frame}[fragile]
   	\frametitle{A Roadmap of Our Analysis}
  		\begin{itemize}
-  			\item why?
- 			\item when?
-  			\item why?     
+  			\item We used Limma to find differential expression measures for PBMC data sets.
+ 			\item We used a Super Learner library and cvAUC to evaluate performance of our predictors (gene pairs).
+  			\item We used LASSO to compare the performance of a simpler method with that of Super Learner.
   		\end{itemize}
 \end{frame}
 
@@ -63,8 +64,12 @@
 
 \begin{frame}[fragile]
   	\frametitle{Limma for Gene Expression Analysis}
- 		how was this used?
-		what did this show us?
+ 		\begin{itemize}
+			\item Limma --- Linear Models for Microarray Data
+			\item Use linear models to predict gene expression based on treatment and control
+			\item Use an empirical Bayes method to create a moderated t-statistic for each contrast coefficient
+			\item adjust for multiple testing using Benjamini-Hochberg procedure
+		\end{itemize}
 \end{frame}
 
 \subsection{The Super Learner Algorithm}
@@ -132,16 +137,13 @@
    			\hline
 		\end{tabular}
 		\end{table}
+		Ratio is the $log_{2}$ fold change in expression values between the treatment and control. 
 \end{frame}
 
 \begin{frame}
 	 \frametitle{Benzene ROC curve}
 		\centering
 	 	\includegraphics[scale=0.45]{../paper/figs/benzene1.png} 
-                \begin{itemize}
-			\item What did we do here?
-		\end{itemize}
-
 \end{frame}
 
 \begin{frame}[fragile]
@@ -162,16 +164,13 @@
   			 \hline
 		\end{tabular}
 		\end{table}
+		Ratio is the $log_{2}$ fold change in expression values between the treatment and control.
 \end{frame}
 
 \begin{frame}
 	 \frametitle{Nickel ROC curve}
 		\centering
 	 	\includegraphics[scale=0.45]{../paper/figs/Nickel_ASCL1-APQ9.png} 
-                \begin{itemize}
-			\item What did we do here?
-		\end{itemize}
-
 \end{frame}
 
 
@@ -193,6 +192,7 @@
   			\hline
 		\end{tabular}
 		\end{table}
+		Ratio is the $log_{2}$ fold change in expression values between the treatment and control.
 \end{frame}
 
 \begin{frame}
@@ -240,8 +240,12 @@
 
 \begin{frame}[fragile]
   	\frametitle{Why Should Anyone Care?}
- 		what is science? \\
-		what is statistics?
+ 		\begin{itemize}
+			\item The pair ACSL1 \& AQP9 looks promising because it predicts benzene exposure well, and a relatively low ability to predict nickel exposure. 
+			\item This particular pair is completely ineffective in predicting other exposures in the PBMC data sets.
+			\item Even a simple parametric method (LASSO) builds a relatively effective predictor of benzene exposure.
+			\item Covariate removal via LASSO leaves AQP9 \& ACSL1 as the last two genes, which agrees with one of the six pairs. 
+		\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
