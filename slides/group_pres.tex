@@ -34,11 +34,11 @@
 
 \begin{frame}[fragile]
   	\frametitle{Benzene, Genes, and Health}
-  		\begin{itemize}
-  			\item Data collected on 77 subjects -- some exposed to benzene, others control.
-			\item Gene expression patterns were measured using a new sequencing technology -- nCounter.
- 			\item Used Super Learner to examine minimum genes necessary to predict benzene exposure with relative accuracy.
-  			\item Found 6 pairs of genes (PRG2, AQP9, NFKB1, ACSL1, CLEC5A, IFNB1)
+	\begin{itemize}
+  			\item Data was collected on 77 subjects -- with some exposed to benzene, and others as control.
+			\item Gene expression patterns were measured using a new sequencing technology -- \textit{nCounter.}
+ 			\item Super Learner was used to ascertain the minimum number of genes necessary to predict benzene exposure with relative accuracy.
+  			\item Found 6 genes (PRG2, AQP9, NFKB1, ACSL1, CLEC5A, IFNB1) with good prediction accuracy.
   		\end{itemize}
 \end{frame}
 
@@ -47,9 +47,9 @@
 \begin{frame}[fragile]
   	\frametitle{A Roadmap of Our Analysis}
  		\begin{itemize}
-  			\item We used Limma to find differential expression measures for PBMC data sets.
- 			\item We used a Super Learner library and cvAUC to evaluate performance of our predictors (gene pairs).
-  			\item We used LASSO to compare the performance of a simpler method with that of Super Learner.
+  			\item Limma was used to find differential expression measures for all exposures in the PBMC data sets.
+			\item Super Learner was used (with a small library), and \textit{cvAUC} was used to evaluate the performance of our predictors of interest (gene pairs).
+			\item LASSO regression was used to compare the performance of a simpler (parametric) method with that of Super Learner.
   		\end{itemize}
 \end{frame}
 
@@ -65,10 +65,10 @@
 \begin{frame}[fragile]
   	\frametitle{Limma for Gene Expression Analysis}
  		\begin{itemize}
-			\item Limma --- Linear Models for Microarray Data
-			\item Use linear models to predict gene expression based on treatment and control
-			\item Use an empirical Bayes method to create a moderated t-statistic for each contrast coefficient
-			\item Adjust for multiple testing using Benjamini-Hochberg procedure
+			\item \textit{Limma} --- Linear Models for Microarray Data (Bioconductor R package).
+			\item Linear models were used to predict gene expression based on treatment and control status.
+			\item An empirical Bayes method was used to create a moderated t-statistic for each contrast coefficient.
+			\item The false discovery rate was controlled by adjusting for multiple testing via the Benjamini-Hochberg procedure.
 		\end{itemize}
 \end{frame}
 
@@ -87,8 +87,8 @@
   	\frametitle{cvAUC -- efficient AUC estimation for ROC curves}
  		$$AUC(P_{0},\psi) = \int_{0}^{1} P_{0}(\psi(X) > c | Y=1) P_{0}(\psi(X) = c | Y=0) dc$$
 		\begin{itemize}
-			\item This package reports cross-validated AUC and computes confidence intervals for cross-validated AUC estimates based on influence curves. This is computationally efficient whereas bootstrapping is intractable.
-			\item \textit{cvAUC} is used here to compute AUC estimates for specific pairs of genes for each exposure in the PBMC data sets.
+			\item This package reports cross-validated AUC and computes confidence intervals for cross-validated AUC estimates based on influence curves. This is computationally efficient (and feasible whereas use of the bootstrap is intractable in cases with large data sets).
+			\item \textit{cvAUC} was used here to compute AUC estimates for ROC curves of the prediction of exposures in the PBMC data sets using specific pairs of genes.
 		\end{itemize}
 \end{frame}
 
@@ -98,18 +98,12 @@
   	\frametitle{LASSO for Pairwise Gene Selection, part I}
 		\centering
  		\includegraphics[scale=0.5]{../paper/figs/lasso_coef.png}
-		\begin{itemize}
-			\item What did we do here?
-		\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
         \frametitle{LASSO for Pairwise Gene Selection, part II}
 		\centering
                 \includegraphics[scale=0.5]{../paper/figs/lasso_mse.png} 
-                \begin{itemize}
-			\item What did we do here?
-		\end{itemize}
 \end{frame}
 
 \section{Results}
@@ -228,7 +222,7 @@
 		}
 		\end{center}
 		\end{table} 
-		\small AUC (of the ROC curve) provides the prediction accuracy (of benzene exposure) given by the pairs of genes listed.
+		\small AUC (of the ROC curve) provides the prediction accuracy (of benzene exposure) given by the pairs of genes listed in the table above.
 \end{frame}
 
 \section{Conclusions}
@@ -269,8 +263,8 @@
   	\frametitle{Thank You!}
 		\begin{itemize}
 			\item {Alan Hubbard, Martyn Smith, \& the Superfund program} \\
-			\item {Limma (Bioconductor), Super Learner (Mark van der Laan), \& cvAUC (Erin LeDell)} \\
-			\item {All of you -- thanks for listening! You don't have to anymore...}
+			\item {\textit{Limma} (Bioconductor), Super Learner (Mark van der Laan), \& \textit{cvAUC} (Erin LeDell)} \\
+			\item {All of you -- thanks for listening! You don't have to pay attention anymore...}
 		\end{itemize}
 \end{frame}
 
