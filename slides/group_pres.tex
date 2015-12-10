@@ -22,11 +22,11 @@
 
 
 \section{Introduction}
-\subsection{Overview}
+
+\subsection{Background}
 
 \begin{frame}[fragile]
-  	\frametitle{StuffA}
-
+  	\frametitle{Benzene, Genes, and Health}
   		\begin{itemize}
   			\item why?
  			\item when?
@@ -34,159 +34,58 @@
   		\end{itemize}
 \end{frame}
 
-\subsection{introIntro}
+\subsection{Overview}
 
 \begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
+  	\frametitle{A Roadmap of Our Analysis}
+ 		\begin{itemize}
+  			\item why?
+ 			\item when?
+  			\item why?     
+  		\end{itemize}
 \end{frame}
 
 \section{Methodology}
-\subsection{Super Learning}
-
-\begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
-\end{frame}
 
 \subsection{Differential Gene Expression}
 
 \begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
+  	\frametitle{Limma for Gene Expression Analysis}
+ 		how was this used?
+		what did this show us?
+\end{frame}
+
+\subsection{The Super Learner Algorithm}
+
+\begin{frame}
+	\frametitle{How Does Super Learner Work?}
+		\begin{center}
+    			\includegraphics[scale=0.45]{../paper/figs/SuperLearn2.png}
+		\end{center}
+\end{frame}
+
+\subsection{Cross-Validated AUC}
+
+\begin{frame}[fragile]
+  	\frametitle{cvAUC -- an R package for....}
+ 		confidence intervals...
+		AUC estimates with Super Learner
+		what else did we do with this?
+\end{frame}
+
+\subsection{LASSO Regression}
+
+\begin{frame}[fragile]
+  	\frametitle{LASSO for Pairwise Gene Selection}
+ 		Regularized regression... \\
+		What did we do here?
 \end{frame}
 
 \section{Results}
-\subsection{HereStuff}
+\subsection{Differential Expression in Exposures}
 
 \begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
-\end{frame}
-
-\subsection{WhatDidWeDo}
-
-\begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
-\end{frame}
-
-\section{Conclusions}
-\subsection{SoWhat}
-
-\begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
-\end{frame}
-
-
-\begin{frame}[fragile]
-  	\frametitle{StuffB}
- 		\begin{table}[ht]
-  		\centering
-  		\begin{tabular}{rrr}
-   			\hline
-   			& stress\_cvAUC & RA\_cvAUC \\ 
-   			\hline
-  			ACSL1 \& AQP9 & 0.21 & 0.22 \\ 
-  			NFKB1 \& IFNB1 & 0.32 & 0.45 \\ 
-  			PRG2 \& ACSL1 & 0.36 & 0.36 \\ 
-  			PRG2 \& CLEC5A & 0.26 & 0.66 \\ 
-  			NFKB1 \& CLEC5A & 0.46 & 0.62 \\ 
-  			ACSL1 \& CLEC5A & 0.46 & 0.74 \\ 
-   			\hline
-		\end{tabular}
-		\end{table}
-\end{frame}
-
-\subsection{SomethingNew}
-
-\begin{frame}[fragile]
-  	\frametitle{StuffB}
+  	\frametitle{Differential Expression --- Benzene}
  		\begin{table}[ht]
 		\caption {Benzene} \label{tab:benzene} 
 		\centering
@@ -205,9 +104,8 @@
 		\end{table}
 \end{frame}
 
-
 \begin{frame}[fragile]
-  	\frametitle{StuffB}
+  	\frametitle{Differential Expression --- Nickel}
  		\begin{table}[ht]
 		\caption {Nickel} \label{tab:nickel} 
 		\centering
@@ -227,7 +125,7 @@
 \end{frame}
 
 \begin{frame}[fragile]
-  	\frametitle{StuffB}
+  	\frametitle{Differential Expression --- Smoking}
  		\begin{table}[ht]
 		\caption {Smoking} \label{tab:smoking} 
 		\centering
@@ -246,10 +144,12 @@
 		\end{table}
 \end{frame}
 
+\subsection{Pairwise Gene AUC Estimates}
+
 \begin{frame}[fragile]
   	\frametitle{StuffB}
  		\begin{table}[h]
-		\caption{AUC estimates via Super Learner} \label{tab: auc}
+		\caption{AUC estimates via Super Learner} \label{tab:auc}
 		\begin{center}
 		\tabcolsep=0.11cm
 		\scalebox{0.7}{
@@ -271,11 +171,29 @@
 		\small stuff
 \end{frame}
 
-\begin{frame}
-	\frametitle{A frame}
-		\begin{center}
-    			\includegraphics[scale=0.45]{../paper/figs/SuperLearn2.png}
-		\end{center}
+\section{Conclusions}
+
+\subsection{So What?}
+
+\begin{frame}[fragile]
+  	\frametitle{Why Should Anyone Care?}
+ 		what is science? \\
+		what is statistics?
 \end{frame}
+
+\begin{frame}[fragile]
+  	\frametitle{(Bio)Statistics Saves Lives!}
+ 		what is science? \\
+		what is statistics?
+\end{frame}
+
+\subsection{Going Forward}
+
+\begin{frame}[fragile]
+  	\frametitle{If We Could Do It All Again...}
+		what is science? \\
+		what is statistics?
+\end{frame}
+
 
 \end{document}
