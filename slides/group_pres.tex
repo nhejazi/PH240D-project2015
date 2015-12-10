@@ -5,7 +5,7 @@
 \usepackage{caption}
 \usepackage{hyperref}
 
-\title{Benzene, SuperLearning, Limma, LASSO -- what more could you want on a Thursday afternoon?}
+\title{Benzene, Limma, LASSO, Super Learner -- what more could you want on a Thursday afternoon?}
 \subtitle{make sure you're sitting down for this...}
 \author{Courtney Schiffman, Partow Imani, Rebecca Hyde, Nima Hejazi}
 \institute[UC Berkeley]{University of California, Berkeley}
@@ -68,7 +68,7 @@
 			\item Limma --- Linear Models for Microarray Data
 			\item Use linear models to predict gene expression based on treatment and control
 			\item Use an empirical Bayes method to create a moderated t-statistic for each contrast coefficient
-			\item adjust for multiple testing using Benjamini-Hochberg procedure
+			\item Adjust for multiple testing using Benjamini-Hochberg procedure
 		\end{itemize}
 \end{frame}
 
@@ -84,10 +84,12 @@
 \subsection{Cross-Validated AUC}
 
 \begin{frame}[fragile]
-  	\frametitle{cvAUC -- an R package for....}
- 		confidence intervals...
-		AUC estimates with Super Learner
-		what else did we do with this?
+  	\frametitle{cvAUC -- efficient AUC estimation for ROC curves}
+ 		$$AUC(P_{0},\psi) = \int_{0}^{1} P_{0}(\psi(X) > c | Y=1) P_{0}(\psi(X) = c | Y=0) dc$$
+		\begin{itemize}
+			\item This package reports cross-validated AUC and computes confidence intervals for cross-validated AUC estimates based on influence curves. This is computationally efficient whereas bootstrapping is intractable.
+			\item \textit{cvAUC} is used here to compute AUC estimates for specific pairs of genes for each exposure in the PBMC data sets.
+		\end{itemize}
 \end{frame}
 
 \subsection{LASSO Regression}
@@ -122,7 +124,7 @@
 \begin{frame}[fragile]
   	\frametitle{Differential Expression --- Benzene}
  		\begin{table}[ht]
-		\caption {Benzene} \label{tab:benzene} 
+		\caption {Differential expression in benzene exposure} \label{tab:benzene} 
 		\centering
 		\begin{tabular}{rlrrr}
   			\hline
@@ -137,7 +139,7 @@
    			\hline
 		\end{tabular}
 		\end{table}
-		Ratio is the $log_{2}$ fold change in expression values between the treatment and control. 
+		\small Ratio is the $log_{2}$ fold change in expression values between the treatment and control. 
 \end{frame}
 
 \begin{frame}
@@ -149,7 +151,7 @@
 \begin{frame}[fragile]
   	\frametitle{Differential Expression --- Nickel}
  		\begin{table}[ht]
-		\caption {Nickel} \label{tab:nickel} 
+		\caption {Differential expression in nickel exposure} \label{tab:nickel} 
 		\centering
 		\begin{tabular}{rrrrrrr}
  			\hline
@@ -164,7 +166,7 @@
   			 \hline
 		\end{tabular}
 		\end{table}
-		Ratio is the $log_{2}$ fold change in expression values between the treatment and control.
+		\small logFC is the $log_{2}$ fold change in expression values between the treatment and control.
 \end{frame}
 
 \begin{frame}
@@ -177,7 +179,7 @@
 \begin{frame}[fragile]
   	\frametitle{Differential Expression --- Smoking}
  		\begin{table}[ht]
-		\caption {Smoking} \label{tab:smoking} 
+		\caption {Differential expression in smoking exposure} \label{tab:smoking} 
 		\centering
 		\begin{tabular}{rrrrrrr}
  		 	\hline
@@ -192,7 +194,7 @@
   			\hline
 		\end{tabular}
 		\end{table}
-		Ratio is the $log_{2}$ fold change in expression values between the treatment and control.
+		\small logFC is the $log_{2}$ fold change in expression values between the treatment and control.
 \end{frame}
 
 \begin{frame}
@@ -205,9 +207,9 @@
 \subsection{Pairwise Gene AUC Estimates}
 
 \begin{frame}[fragile]
-  	\frametitle{StuffB}
+  	\frametitle{AUC Prediction Estimates for All PBMC Data Sets}
  		\begin{table}[h]
-		\caption{AUC estimates via Super Learner} \label{tab:auc}
+		\caption{AUC estimates for all exposures (via Super Learner \& cvAUC)} \label{tab:auc}
 		\begin{center}
 		\tabcolsep=0.11cm
 		\scalebox{0.7}{
@@ -226,7 +228,7 @@
 		}
 		\end{center}
 		\end{table} 
-		\small stuff
+		\small AUC (of the ROC curve) provides the prediction accuracy (of benzene exposure) given by the pairs of genes listed.
 \end{frame}
 
 \section{Conclusions}
@@ -248,19 +250,13 @@
 		\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  	\frametitle{(Bio)Statistics Saves Lives!}
- 		what is science? \\
-		what is statistics?
-\end{frame}
-
 \subsection{Going Forward}
 
 \begin{frame}[fragile]
-  	\frametitle{If We Could Do It All Again...}
+  	\frametitle{Future Directions}
 		\begin{itemize}
-			\item what is science?
-			\item what is statistics?
+			\item Robustness of prediction to the choice of models in the Super Learner library warrants further investigation. 
+			\item Explore how other differential expression methods (other than Limma) can be incorporated into these analyses.
 		\end{itemize}
   		\begin{figure}
    			\href{https://github.com/nhejazi/PH240D-project2015}
@@ -272,8 +268,9 @@
 \begin{frame}[fragile]
   	\frametitle{Thank You!}
 		\begin{itemize}
-			\item {Alan Hubbard, Martyn Smith, Superfund, Limma, SuperLearner}
-			\item {You, thanks for listening! You don't have to anymore...}
+			\item {Alan Hubbard, Martyn Smith, \& the Superfund program} \\
+			\item {Limma (Bioconductor), Super Learner (Mark van der Laan), \& cvAUC (Erin LeDell)} \\
+			\item {All of you -- thanks for listening! You don't have to anymore...}
 		\end{itemize}
 \end{frame}
 
