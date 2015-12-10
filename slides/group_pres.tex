@@ -3,9 +3,10 @@
 \usetheme{Darmstadt}
 \usepackage{graphics}
 \usepackage{caption}
+\usepackage{hyperref}
 
-\title{Title Here...}
-\subtitle{Even longer title here...}
+\title{Benzene, SuperLearning, Limma, LASSO -- what more could you want on a Thursday afternoon?}
+\subtitle{make sure you're sitting down for this...}
 \author{Courtney Schiffman, Partow Imani, Rebecca Hyde, Nima Hejazi}
 \institute[UC Berkeley]{University of California, Berkeley}
 \date{December 10, 2015}
@@ -22,6 +23,12 @@
 
 
 \section{Introduction}
+
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents[currentsection,currentsubsection,hideothersubsections,sectionstyle=show/shaded] 
+\end{frame}
+
 
 \subsection{Background}
 
@@ -46,6 +53,11 @@
 \end{frame}
 
 \section{Methodology}
+
+\begin{frame}
+        \frametitle{Contents}
+        \tableofcontents[currentsection,currentsubsection,hideothersubsections,sectionstyle=show/shaded]
+\end{frame}
 
 \subsection{Differential Gene Expression}
 
@@ -76,12 +88,30 @@
 \subsection{LASSO Regression}
 
 \begin{frame}[fragile]
-  	\frametitle{LASSO for Pairwise Gene Selection}
- 		Regularized regression... \\
-		What did we do here?
+  	\frametitle{LASSO for Pairwise Gene Selection, part I}
+		\centering
+ 		\includegraphics[scale=0.5]{../paper/figs/lasso_coef.png}
+		\begin{itemize}
+			\item What did we do here?
+		\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+        \frametitle{LASSO for Pairwise Gene Selection, part II}
+		\centering
+                \includegraphics[scale=0.5]{../paper/figs/lasso_mse.png} 
+                \begin{itemize}
+			\item What did we do here?
+		\end{itemize}
 \end{frame}
 
 \section{Results}
+
+\begin{frame}
+        \frametitle{Contents}
+        \tableofcontents[currentsection,currentsubsection,hideothersubsections,sectionstyle=show/shaded]
+\end{frame}
+
 \subsection{Differential Expression in Exposures}
 
 \begin{frame}[fragile]
@@ -104,6 +134,16 @@
 		\end{table}
 \end{frame}
 
+\begin{frame}
+	 \frametitle{Benzene ROC curve}
+		\centering
+	 	\includegraphics[scale=0.45]{../paper/figs/benzene1.png} 
+                \begin{itemize}
+			\item What did we do here?
+		\end{itemize}
+
+\end{frame}
+
 \begin{frame}[fragile]
   	\frametitle{Differential Expression --- Nickel}
  		\begin{table}[ht]
@@ -124,6 +164,17 @@
 		\end{table}
 \end{frame}
 
+\begin{frame}
+	 \frametitle{Nickel ROC curve}
+		\centering
+	 	\includegraphics[scale=0.45]{../paper/figs/Nickel_ASCL1-APQ9.png} 
+                \begin{itemize}
+			\item What did we do here?
+		\end{itemize}
+
+\end{frame}
+
+
 \begin{frame}[fragile]
   	\frametitle{Differential Expression --- Smoking}
  		\begin{table}[ht]
@@ -143,6 +194,13 @@
 		\end{tabular}
 		\end{table}
 \end{frame}
+
+\begin{frame}
+	 \frametitle{Smoking ROC curve}
+		\centering
+	 	\includegraphics[scale=0.4]{../paper/figs/smoking3.png}
+\end{frame}
+
 
 \subsection{Pairwise Gene AUC Estimates}
 
@@ -173,6 +231,11 @@
 
 \section{Conclusions}
 
+\begin{frame}
+        \frametitle{Contents}
+        \tableofcontents[currentsection,currentsubsection,hideothersubsections,sectionstyle=show/shaded]
+\end{frame}
+
 \subsection{So What?}
 
 \begin{frame}[fragile]
@@ -191,9 +254,25 @@
 
 \begin{frame}[fragile]
   	\frametitle{If We Could Do It All Again...}
-		what is science? \\
-		what is statistics?
+		\begin{itemize}
+			\item what is science?
+			\item what is statistics?
+		\end{itemize}
+  		\begin{figure}
+   			\href{https://github.com/nhejazi/PH240D-project2015}
+         			{\includegraphics[scale=0.25]{../paper/figs/octocat.png}}
+			\caption{\url{https://github.com/nhejazi/PH240D-project2015}}
+      		\end{figure}
 \end{frame}
+
+\begin{frame}[fragile]
+  	\frametitle{Thank You!}
+		\begin{itemize}
+			\item {Alan Hubbard, Martyn Smith, Superfund, Limma, SuperLearner}
+			\item {You, thanks for listening! You don't have to anymore...}
+		\end{itemize}
+\end{frame}
+
 
 
 \end{document}
