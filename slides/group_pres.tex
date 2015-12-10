@@ -63,7 +63,7 @@
 \subsection{Differential Gene Expression}
 
 \begin{frame}[fragile]
-  	\frametitle{Limma for Gene Expression Analysis}
+	\frametitle{\textit{Limma} for Gene Expression Analysis}
  		\begin{itemize}
 			\item \textit{Limma} --- Linear Models for Microarray Data (Bioconductor R package).
 			\item Linear models were used to predict gene expression based on treatment and control status.
@@ -137,7 +137,7 @@
 \end{frame}
 
 \begin{frame}
-	 \frametitle{Benzene ROC curve}
+	\frametitle{Benzene ROC curve (AQP9 \& ACSL1)}
 		\centering
 	 	\includegraphics[scale=0.45]{../paper/figs/benzene1.png} 
 \end{frame}
@@ -147,16 +147,16 @@
  		\begin{table}[ht]
 		\caption {Differential expression in nickel exposure} \label{tab:nickel} 
 		\centering
-		\begin{tabular}{rrrrrrr}
+		\begin{tabular}{rrrrrr}
  			\hline
- 			& logFC & AveExpr & t & P.Value & adj.P.Val & B \\ 
+ 			& logFC & AveExpr & t & P.Value & adj.P.Val \\ 
   			\hline
-			NFKB1 & 1.11 & 9.65 & 5.63 & 0.00 & 0.00 & 3.00 \\ 
-  			ACSL1 & 0.88 & 9.47 & 4.92 & 0.00 & 0.00 & 1.49 \\ 
-  			PRG2 & -0.48 & 5.32 & -4.42 & 0.00 & 0.00 & 0.41 \\ 
-  			IFNB1 & -0.41 & 3.83 & -3.93 & 0.00 & 0.00 & -0.65 \\ 
-  			AQP9 & 1.02 & 9.53 & 3.70 & 0.00 & 0.00 & -1.16 \\ 
-  			CLEC5A & -0.11 & 5.88 & -0.85 & 0.40 & 0.47 & -6.04 \\ 
+			NFKB1 & 1.11 & 9.65 & 5.63 & 0.00 & 0.00 \\ 
+  			ACSL1 & 0.88 & 9.47 & 4.92 & 0.00 & 0.00 \\ 
+  			PRG2 & -0.48 & 5.32 & -4.42 & 0.00 & 0.00 \\ 
+  			IFNB1 & -0.41 & 3.83 & -3.93 & 0.00 & 0.00 \\ 
+  			AQP9 & 1.02 & 9.53 & 3.70 & 0.00 & 0.00 \\ 
+  			CLEC5A & -0.11 & 5.88 & -0.85 & 0.40 & 0.47 \\ 
   			 \hline
 		\end{tabular}
 		\end{table}
@@ -164,7 +164,7 @@
 \end{frame}
 
 \begin{frame}
-	 \frametitle{Nickel ROC curve}
+	\frametitle{Nickel ROC curve (AQP9 \& ACSL1)}
 		\centering
 	 	\includegraphics[scale=0.45]{../paper/figs/Nickel_ASCL1-APQ9.png} 
 \end{frame}
@@ -175,16 +175,16 @@
  		\begin{table}[ht]
 		\caption {Differential expression in smoking exposure} \label{tab:smoking} 
 		\centering
-		\begin{tabular}{rrrrrrr}
+		\begin{tabular}{rrrrrr}
  		 	\hline
- 			& logFC & AveExpr & t & P.Value & adj.P.Val & B \\ 
+ 			& logFC & AveExpr & t & P.Value & adj.P.Val \\ 
  			 \hline
-			PRG2 & 0.12 & 4.49 & 1.04 & 0.31 & 1.00 & -4.63 \\ 
-  			AQP9 & 0.18 & 7.56 & 0.62 & 0.54 & 1.00 & -4.75 \\ 
-  			NFKB1 & 0.14 & 8.01 & 0.61 & 0.54 & 1.00 & -4.76 \\ 
-  			ACSL1 & -0.27 & 6.71 & -0.58 & 0.56 & 1.00 & -4.76 \\ 
-  			CLEC5A & -0.12 & 4.43 & -0.52 & 0.61 & 1.00 & -4.78 \\ 
-  			IFNB1 & -0.02 & 4.49 & -0.13 & 0.90 & 1.00 & -4.82 \\ 
+			PRG2 & 0.12 & 4.49 & 1.04 & 0.31 & 1.00 \\ 
+  			AQP9 & 0.18 & 7.56 & 0.62 & 0.54 & 1.00 \\ 
+  			NFKB1 & 0.14 & 8.01 & 0.61 & 0.54 & 1.00 \\ 
+  			ACSL1 & -0.27 & 6.71 & -0.58 & 0.56 & 1.00 \\ 
+  			CLEC5A & -0.12 & 4.43 & -0.52 & 0.61 & 1.00 \\ 
+  			IFNB1 & -0.02 & 4.49 & -0.13 & 0.90 & 1.00 \\ 
   			\hline
 		\end{tabular}
 		\end{table}
@@ -192,7 +192,7 @@
 \end{frame}
 
 \begin{frame}
-	 \frametitle{Smoking ROC curve}
+	\frametitle{Smoking ROC curve (AQP9 \& ACSL1)}
 		\centering
 	 	\includegraphics[scale=0.4]{../paper/figs/smoking3.png}
 \end{frame}
@@ -222,7 +222,7 @@
 		}
 		\end{center}
 		\end{table} 
-		\small AUC (of the ROC curve) provides the prediction accuracy (of benzene exposure) given by the pairs of genes listed in the table above.
+		\small AUC (of the ROC curve) provides the prediction accuracy given by the pairs of genes listed in the table above.
 \end{frame}
 
 \section{Conclusions}
@@ -250,7 +250,7 @@
   	\frametitle{Future Directions}
 		\begin{itemize}
 			\item Robustness of prediction to the choice of models in the Super Learner library warrants further investigation. 
-			\item Explore how other differential expression methods (other than Limma) can be incorporated into these analyses.
+			\item Gene Ontology.
 		\end{itemize}
   		\begin{figure}
    			\href{https://github.com/nhejazi/PH240D-project2015}
