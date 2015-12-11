@@ -8,7 +8,7 @@
 # analysis for genes on Rheumatoid Arthritis and Stress
 rm(list=ls())
 set.seed(0) # for reproducibility across group analyses
-data_dir = '/Users/nimahejazi/github-repos/bmcsa-project240D/data/' # change to run
+data_dir = '/Users/nimahejazi/github-repos/bmcsa-project240D/data/' # change
 stress_data = "final_stress_genes.txt" # change to run
 rheumatoid_data = "final_ra_genes.txt" # change to run
 if (getwd() != data_dir) { setwd(data_dir) }
@@ -78,7 +78,8 @@ rm(data_dir, stress_data, rheumatoid_data)
 library(ROCR)
 library(cvAUC)
 library(SuperLearner)
-SL.lib <- c("SL.glm","SL.stepAIC","SL.bayesglm","SL.randomForest","SL.gam","SL.mean")
+SL.lib <- c("SL.glm","SL.stepAIC","SL.bayesglm","SL.randomForest",
+	    "SL.gam","SL.mean")
 CV_folds = 10
 
 
@@ -89,10 +90,10 @@ Y = as.vector(Y)
 Y = as.numeric(Y) # numeric vector of our zero-one outcomes
 
 
-# Xfinal=data.frame(X=normal[,c(18,23)]) # this should be an nx2 data frame where the two columns
+# Xfinal=data.frame(X=normal[,c(18,23)]) # an nx2 data frame where the columns
 # # are the expressions/counts of the 2 genes
 # 
-# fit.test.final=CV.SuperLearner(Y,Xfinal,family=binomial(),SL.library=SL.library,V=V)
+# fit.test.final=CV.SuperLearner(Y,Xfinal,family=binomial(), SL.library=SL.library,V=V)
 # fld=fit.test.final$fold
 # predsY.final=fit.test.final$SL.predict
 # fold=rep(NA,length(predsY.final))
