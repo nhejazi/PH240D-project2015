@@ -5,8 +5,8 @@ Group Members: Courtney Schiffman, Partow Imani, Rebecca Hyde, & Nima Hejazi
 
 Project Title: _Finding Gene Signatures Unique to Benzene Exposure_
 
-Where to find things (roadmap):
+Roadmap (or, where to find things):
 
-* scripts - contains most R code used in gathering data and extracting results.
-* slides - contains the slide deck produced for the talk given on this project.
-* paper - contains the full report detailing motivations and results obtained.
+* scripts/ - contains most R code used in gathering data and extracting results
+* slides/ - contains the slide deck produced for the talk given on this project
+* paper/ - contains the full report detailing motivations and results obtained
